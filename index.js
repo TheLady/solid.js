@@ -49,6 +49,7 @@ var Solid = {
   meta: require('./lib/meta'),
   signup: require('./lib/auth').signup,
   status: require('./lib/status'),
+  util: require('./lib/util/web-util'),
   vocab: require('./lib/vocab'),
   web: require('./lib/web')
 }
