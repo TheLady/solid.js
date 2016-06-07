@@ -327,7 +327,7 @@ The `SolidResponse` object returned by most `solid.web` calls, including
 * `meta` - the URL of the corresponding .meta resource //
   `https://example.org/blog/hello-world.meta`
 * `types` - An array of LDP types for the resource, if applicable. For example:
-    `[ 'http://www.w3.org/ns/ldp#LDPResource', 
+    `[ 'http://www.w3.org/ns/ldp#LDPResource',
        'http://www.w3.org/ns/ldp#Resource' ]`
 * `user` - the WebID of the authenticated user (if authenticated) //
   `https://user.example.org/profile#me`
@@ -345,8 +345,8 @@ The response object also has some convenience methods:
 
 ### Fetching a Resource
 
-Assuming that a resource or a container exists (see 
-[creating resources](#creating-a-resource) and 
+Assuming that a resource or a container exists (see
+[creating resources](#creating-a-resource) and
 [creating containers](#creating-a-solid-container) below), you can retrieve
 it using `web.get()`:
 
@@ -364,9 +364,9 @@ solid.web.get(url)
     } else {
       // Regular resource
       console.log('Raw resource: %s', response.raw())
-      
-      // You can parse it using RDFLib.js, etc:
-      var parsedGraph = response.parsedGraph()
+
+      // You can access the parsed graph using RDFLib.js, etc:
+      var parsedGraph = response.parsedGraph
     }
   })
   .catch(function(err) {
@@ -389,7 +389,7 @@ var url = 'https://example.org/blog/hello-world'
 
 solid.web.get(url)
   .then(function(response) {
-    var graph = response.parsedGraph()
+    var graph = response.parsedGraph
     // Print all statements matching resources of type foaf:Post
     console.log(graph.statementsMatching(undefined, vocab.rdf('type'),
       vocab.sioc('Post')))
@@ -401,7 +401,7 @@ solid.web.get(url)
 
 ### Creating a Solid Container
 
-The Solid client offers a function called `solid.web.createContainer()`, 
+The Solid client offers a function called `solid.web.createContainer()`,
 which is used to create containers. The
 function accepts the following parameters:
 
@@ -413,7 +413,7 @@ function accepts the following parameters:
 * `data` (string) - Optional RDF data serialized as `text/turtle`; can also be an empty
   string if no data will be sent.
 
-In the example below we are also sending some meta data (semantics) about the 
+In the example below we are also sending some meta data (semantics) about the
 container, setting its type to `sioc:Blog`.
 
 ```javascript
@@ -444,7 +444,7 @@ do `solid.web.createContainer(url, name)`.
 ### Listing a Solid Container
 
 To list the contents of a Solid container, just use `solid.web.get()`.
-This returns a promise that resolves to a `SolidContainer` instance, 
+This returns a promise that resolves to a `SolidContainer` instance,
 which will contain various useful properties:
 
 - A short name (`.name`) and absolute URI (`.uri`)
